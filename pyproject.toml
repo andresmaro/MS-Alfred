@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ms-alfred"
+version = "0.1.0"
+description = "Platzi Hackathon B2B Project"
+authors = ["andresmaro <andresmaro@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ms_alfred"}]
+
+[tool.poetry.scripts]
+start = "app:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+jupyter = "^1.0.0"
+fastapi = "^0.89.1"
+uvicorn = "^0.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
