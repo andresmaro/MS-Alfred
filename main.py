@@ -34,7 +34,7 @@ async def healthcheck():
 
 
 @app.post("/api/v1/open", status_code=201)
-async def phone_call(prompt: Prompt):
+async def open_call(prompt: Prompt):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"{prompt.instruction}: {prompt.data}",
