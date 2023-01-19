@@ -1,7 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+import openai
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 origins = ["*"]
 
@@ -14,6 +23,25 @@ app.add_middleware(
 )
 
 
-@app.get("/api/v1/")
-async def main():
-    return {"message": "Hello World"}
+class Prompt(BaseModel):
+    instruction: str
+    data: str
+
+
+@app.get("/health", status_code=200)
+async def healthcheck():
+    return {'healthcheck': 'Everything OK!'}
+
+
+@app.post("/api/v1/open", status_code=201)
+async def phone_call(prompt: Prompt):
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=f"{prompt.instruction}: {prompt.data}",
+        temperature=0,
+        max_tokens=60,
+        top_p=1.0,
+        frequency_penalty=0.0,
+        presence_penalty=0.0,
+    )
+    return {"result": response}
