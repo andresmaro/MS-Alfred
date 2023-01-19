@@ -1,32 +1,11 @@
 import datetime
-import json
 import logging
-import os
 import uuid
-import json
 
-from dotenv import load_dotenv
 from google.cloud import bigquery
-from google.oauth2 import service_account
 
+from alfred.auth import credentials
 from alfred.models import Prompt
-
-load_dotenv()
-
-credentials = service_account.Credentials.from_service_account_info(
-    {
-        "type": os.getenv("GCP_TYPE"),
-        "project_id": os.getenv("GCP_PROJECT_ID"),
-        "private_key_id": os.getenv("GCP_PRIVATE_KEY_ID"),
-        "private_key": os.getenv("GCP_PRIVATE_KEY"),
-        "client_email": os.getenv("GCP_CLIENT_EMAIL"),
-        "client_id": os.getenv("GCP_CLIENT_I"),
-        "auth_uri": os.getenv("GCP_AUTH_URI"),
-        "token_uri": os.getenv("GCP_TOKEN_URI"),
-        "auth_provider_x509_cert_url": os.getenv("GCP_AUTH_PROVIDER_CERT"),
-        "client_x509_cert_url": os.getenv("GCP_CLIENT_CERT"),
-    }
-)
 
 
 class Database:

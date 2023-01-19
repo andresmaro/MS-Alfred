@@ -20,6 +20,7 @@ google-auth = "^2.16.0"
 google-cloud-bigquery = "^3.4.2"
 bigquery-python = "^1.15.0"
 setuptools = "^66.0.0"
+google-cloud-speech = "^2.17.0"
 
 
 [build-system]

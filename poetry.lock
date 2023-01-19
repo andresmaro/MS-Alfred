@@ -812,6 +812,26 @@ google-auth = ">=1.25.0,<3.0dev"
 grpc = ["grpcio (>=1.38.0,<2.0dev)"]
 
 [[package]]
+name = "google-cloud-speech"
+version = "2.17.0"
+description = "Google Cloud Speech API client library"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "google-cloud-speech-2.17.0.tar.gz", hash = "sha256:2dbda8576afb084d6a73989ac731a9226df164aa6c391c753687e48e7a3ac4db"},
+    {file = "google_cloud_speech-2.17.0-py2.py3-none-any.whl", hash = "sha256:7ffe084855b06516ed5ad66af0b9ffc7925d9d9b0a56a6c8eac9f071422daa8d"},
+]
+
+[package.dependencies]
+google-api-core = {version = ">=1.34.0,<2.0.0 || >=2.11.0,<3.0.0dev", extras = ["grpc"]}
+proto-plus = [
+    {version = ">=1.22.0,<2.0.0dev", markers = "python_version < \"3.11\""},
+    {version = ">=1.22.2,<2.0.0dev", markers = "python_version >= \"3.11\""},
+]
+protobuf = ">=3.19.5,<3.20.0 || >3.20.0,<3.20.1 || >3.20.1,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<5.0.0dev"
+
+[[package]]
 name = "google-crc32c"
 version = "1.5.0"
 description = "A python wrapper of the C library 'Google CRC32C'"
@@ -2986,4 +3006,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "89dd6ba7b3d411f5a6b7a4ea2beca342f95723b999774b284af318f1154ffb84"
+content-hash = "0320c7501c1290d0ae36f2c4cbd167dd81bb6c49b9b2d83c349b03936c9ce9f1"
