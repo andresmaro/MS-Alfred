@@ -19,7 +19,7 @@ class Database:
             self.insert_items(prompt, answer, uid)
             return uid
         else:
-            prompt.data=''
+            prompt.data = ''
             self.insert_items(prompt, answer, prompt.uid)
             return prompt.uid
 
@@ -39,8 +39,19 @@ class Database:
         else:
             logging.error("Encountered errors while inserting rows: {}".format(errors))
 
-    def get_latest(self, source):
-        query = f'SELECT * FROM `andresmaro.maro_dataset.cripto_alerts` WHERE `source` = "{source}" ORDER BY time desc LIMIT 100'
+    def get_latest(self):
+        query = f'SELECT * FROM `andresmaro.maro_dataset.alfred` ORDER BY time desc LIMIT 50'
         rows = self.client.query(query).result()
-        result_set = [row.hash for row in rows]
-        return result_set
+        result = {}
+        for row in rows:
+            if row.uid in result:
+                result[row.uid].append(row)
+            else:
+                result[row.uid] = [row]
+        # _list_ = []
+        #
+        # for key, value in result.items():
+        #     _list_.append(value)
+
+        # result_set = [row.uid for row in rows]
+        return result
